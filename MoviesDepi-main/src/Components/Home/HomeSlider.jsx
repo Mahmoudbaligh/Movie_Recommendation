@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "./HomeSlider.css";
 
-import { BiDislike, BiLike } from "react-icons/bi";
-import { FaPlus } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa6";
-import { FaPlay } from "react-icons/fa6";
+import { BiChevronRight, BiDislike, BiLike } from "react-icons/bi";
+import { FaRegHeart, FaPlay } from "react-icons/fa6";
 import { FiClock, FiStar } from "react-icons/fi";
 
 // ! Use Cart
@@ -19,13 +17,13 @@ import { useCart } from "react-use-cart";
 
 const HomeSlider = ({ content }) => {
     const { addItem, items } = useCart();
+    const navigate = useNavigate();
 
     const [movieData, setMovieData] = useState([]);
-    const [topRatedData, settopRatedData] = useState([]);
+    const [topRatedData, setTopRatedData] = useState([]);
     const [upcomingData, setUpcomingData] = useState([]);
+    const [popularData, setPopularData] = useState([]);
     const [movieDetails, setMovieDetails] = useState({});
-
-    const [disabledButtons, setDisabledButtons] = useState({});
 
     // Function to fetch movie details
     const fetchMovieDetails = async (movieId) => {
@@ -54,29 +52,36 @@ const HomeSlider = ({ content }) => {
                 const upcomingApi = fetch(
                     "https://api.themoviedb.org/3/movie/upcoming?api_key=9ce966a2d7e1bd9ab1cef00c8debcb39"
                 );
+                const popularApi = fetch(
+                    "https://api.themoviedb.org/3/movie/popular?api_key=9ce966a2d7e1bd9ab1cef00c8debcb39"
+                );
 
-                const [movieRes, topRatedRes, upcomingRes] = await Promise.all([
+                const [movieRes, topRatedRes, upcomingRes, popularRes] = await Promise.all([
                     movieApi,
                     topRatedApi,
                     upcomingApi,
+                    popularApi
                 ]);
 
                 const movieJson = await movieRes.json();
                 const topRatedJson = await topRatedRes.json();
                 const upcomingJson = await upcomingRes.json();
+                const popularJson = await popularRes.json();
 
                 setMovieData(movieJson.results);
-                settopRatedData(topRatedJson.results);
+                setTopRatedData(topRatedJson.results);
                 setUpcomingData(upcomingJson.results);
+                setPopularData(popularJson.results);
 
                 // Fetch additional details for movies
                 const details = {};
 
-                // Get all unique movie IDs from all three lists
+                // Get all unique movie IDs from all four lists
                 const allMovies = [
                     ...movieJson.results,
                     ...topRatedJson.results,
-                    ...upcomingJson.results
+                    ...upcomingJson.results,
+                    ...popularJson.results
                 ];
 
                 // Create a Set to store unique movie IDs
@@ -105,40 +110,63 @@ const HomeSlider = ({ content }) => {
     }, []);
 
     const getDataByContent = () => {
-        if (content === "Movies") return movieData;
+        if (content === "Trending") return movieData;
         if (content === "Top Rated") return topRatedData;
-        if (content === "Up coming") return upcomingData;
+        if (content === "Upcoming") return upcomingData;
+        if (content === "Popular") return popularData;
         return [];
     };
 
     const handleAddToWatchlist = (item) => {
         addItem({ ...item, price: 0 });
-        setDisabledButtons((prev) => ({ ...prev, [item.id]: true }));
     };
 
     return (
         <div className="HomeSlider mt-5">
-            <h1 className="text-white fw-bold px-4 py-1 text-uppercase">{content}</h1>
+            <div className="section-header">
+                <div className="title-container">
+                    <h2 className="section-title">{content}</h2>
+                    <div className="title-decoration"></div>
+                </div>
+                <div
+                    className="view-more"
+                    onClick={() => {
+                        let movieType = "popular"; // Default to popular
+                        if (content === "Top Rated") movieType = "topRated";
+                        else if (content === "Upcoming") movieType = "upcoming";
+                        else if (content === "Popular") movieType = "popular";
+                        else if (content === "Trending") movieType = "popular"; // Map Trending to popular
+                        navigate("/movielist", { state: { movieType } });
+                    }}
+                >
+                    <span>See All</span>
+                    <BiChevronRight size={18} />
+                </div>
+            </div>
             <Swiper
-                className="mySwiper text-center"
+                className="mySwiper"
                 navigation={true}
-                modules={[Navigation]}
-                pagination={{ clickable: true }}
-                spaceBetween={10}
+                modules={[Navigation, Pagination]}
+                pagination={{ clickable: true, dynamicBullets: true }}
+                spaceBetween={20}
                 slidesPerView={1}
                 loop={true}
                 breakpoints={{
                     576: {
                         slidesPerView: 2,
+                        spaceBetween: 15,
                     },
                     768: {
                         slidesPerView: 3,
+                        spaceBetween: 20,
                     },
                     992: {
                         slidesPerView: 4,
+                        spaceBetween: 20,
                     },
                     1244: {
                         slidesPerView: 5,
+                        spaceBetween: 25,
                     },
                 }}
             >
@@ -169,7 +197,7 @@ const HomeSlider = ({ content }) => {
                                             <FaRegHeart
                                                 size={20}
                                                 className={`border rounded-pill icon ${items.some(i => i.id === item.id) ? "active" : ""}`}
-                                                style={{ cursor: disabledButtons[item.id] || items.some(i => i.id === item.id) ? "not-allowed " : "pointer " }}
+                                                style={{ cursor: items.some(i => i.id === item.id) ? "not-allowed" : "pointer" }}
                                             />
                                         </div>
                                         <div onClick={(e) => e.preventDefault()}>
@@ -208,3 +236,5 @@ const HomeSlider = ({ content }) => {
 };
 
 export default HomeSlider;
+
+

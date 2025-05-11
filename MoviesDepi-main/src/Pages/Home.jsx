@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import HomeSlider from '../Components/Home/HomeSlider';
 
 
@@ -8,16 +8,14 @@ const Home = () => {
 
 
 
-    
+
     return (
         <div className='home pb-5 bg-black'>
             <Hero />
-            {/* <HomeSlider content="News" /> */}
-
-            <HomeSlider content="Movies" />
+            <HomeSlider content="Trending" />
             <HomeSlider content="Top Rated" />
-            <HomeSlider content="Up coming" />
-
+            <HomeSlider content="Popular" />
+            <HomeSlider content="Upcoming" />
 
         </div>
     )

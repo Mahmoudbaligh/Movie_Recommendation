@@ -10,30 +10,30 @@ const Footer = () => {
                 <div className="row Text">
                     <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                         <ul className="list-unstyled">
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Audio Description</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Investor Relations</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Legal Notices</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Audio Description</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Investor Relations</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Legal Notices</a></li>
                         </ul>
                     </div>
                     <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                         <ul className="list-unstyled">
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Help Centre</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Cookie Preferences</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Jobs</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Help Centre</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Cookie Preferences</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Jobs</a></li>
                         </ul>
                     </div>
                     <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                         <ul className="list-unstyled">
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Gift Cards</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Terms of Use</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Corporate Information</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Gift Cards</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Terms of Use</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Corporate Information</a></li>
                         </ul>
                     </div>
                     <div className="col-lg-3 col-md-6 col-sm-12 mb-3">
                         <ul className="list-unstyled">
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Media Centre</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Privacy</a></li>
-                            <li className="mb-2"><a href="#" className="text-white text-decoration-none">Contact Us</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Media Centre</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Privacy</a></li>
+                            <li className="mb-2"><a className="text-white text-decoration-none">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

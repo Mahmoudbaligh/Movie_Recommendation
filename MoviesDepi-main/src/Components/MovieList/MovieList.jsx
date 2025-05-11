@@ -80,11 +80,11 @@ const MovieList = ({ movieType }) => {
   const getHeading = () => {
     switch (movieType) {
       case 'topRated':
-        return '🔥 Top Rated Movies';
+        return 'Top Rated Movies';
       case 'upcoming':
-        return '🚀 Upcoming Movies';
+        return 'Upcoming Movies';
       default:
-        return '🎬 Popular Movies';
+        return 'Popular Movies';
     }
   };
 

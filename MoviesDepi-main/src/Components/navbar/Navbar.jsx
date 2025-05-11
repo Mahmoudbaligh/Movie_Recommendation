@@ -6,7 +6,7 @@ import { FaGear } from "react-icons/fa6";
 
 import { Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { BsFillDoorOpenFill } from "react-icons/bs";
 import { PiPersonSimpleRunBold } from "react-icons/pi";
@@ -18,11 +18,9 @@ const NavbarMenu = () => {
         emptyCart
     } = useCart();
 
-
-
-
-
     const navigate = useNavigate();
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const token = localStorage.getItem("token");
 
@@ -86,15 +84,15 @@ const NavbarMenu = () => {
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body>
-                            <Nav className="links  me-md-auto d-flex align-md-items-center gap-md-5  gap-4 px-md-2 pb-1 h-100">
-                                <Link to="/" className="link">
+                            <Nav className="links me-md-auto d-flex align-md-items-center gap-md-5 gap-4 px-md-2 pb-1 h-100">
+                                <Link to="/" className={`link ${currentPath === '/' ? 'active' : ''}`}>
                                     Home
                                 </Link>
-                                <Link to="/movielist" className="link">
+                                <Link to="/movielist" className={`link ${currentPath === '/movielist' ? 'active' : ''}`}>
                                     Movies
                                 </Link>
-                                <Link to="/watchlist" className="link  justify-content-start">
-                                    <div className="up position-relative d-flex ">
+                                <Link to="/watchlist" className={`link justify-content-start ${currentPath === '/watchlist' ? 'active' : ''}`}>
+                                    <div className="up position-relative d-flex">
                                         <p>Watch List</p>
                                         {totalUniqueItems > 0 && (
                                             <span className="counterwatchlist position-absolute bg-danger d-flex">
@@ -103,7 +101,7 @@ const NavbarMenu = () => {
                                         )}
                                     </div>
                                 </Link>
-                                <Link to="/contactus" className="link">
+                                <Link to="/contactus" className={`link ${currentPath === '/contactus' ? 'active' : ''}`}>
                                     Contact Us
                                 </Link>
                             </Nav>

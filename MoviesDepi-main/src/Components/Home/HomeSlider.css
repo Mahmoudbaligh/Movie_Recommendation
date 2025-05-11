@@ -49,8 +49,69 @@
     opacity: 1;
 }
 
+.HomeSlider {
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.HomeSlider .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
 
 
+.HomeSlider .title-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.HomeSlider .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+    padding-left: 15px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.HomeSlider .section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff0000, #820000);
+    border-radius: 2px;
+}
+
+
+.HomeSlider .view-more {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 15px;
+    background-color: rgba(130, 0, 0, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.HomeSlider .view-more:hover {
+    background-color: rgba(130, 0, 0, 0.5);
+    transform: translateX(5px);
+}
 .HomeSlider .info {
     position: absolute;
     bottom: 0;
@@ -81,9 +142,8 @@
 }
 
 .HomeSlider .icons .icon.active {
-    background-color: rgb(255, 0, 0);
+    /* background-color: rgb(255, 0, 0); */
     color: white;
-
 }
 
 
@@ -101,7 +161,64 @@
 }
 
 /* Responsive styles for HomeSlider */
+@media (max-width: 992px) {
+    .HomeSlider {
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+
+    .HomeSlider .section-header {
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+
+    .HomeSlider .section-title {
+        font-size: 22px;
+    }
+
+    .HomeSlider .title-decoration {
+        width: 35px;
+        margin-top: 6px;
+    }
+
+    .HomeSlider .view-more {
+        font-size: 13px;
+        padding: 5px 12px;
+    }
+}
+
 @media (max-width: 768px) {
+    .HomeSlider {
+        padding: 0 10px;
+        margin-bottom: 25px;
+    }
+
+    .HomeSlider .section-header {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .HomeSlider .section-title {
+        font-size: 20px;
+        padding-left: 12px;
+    }
+
+    .HomeSlider .section-title::before {
+        width: 3px;
+    }
+
+    .HomeSlider .title-decoration {
+        width: 30px;
+        height: 2px;
+        margin-top: 5px;
+        margin-left: 12px;
+    }
+
+    .HomeSlider .view-more {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
     .HomeSlider .img {
         height: 380px;
     }
@@ -126,6 +243,43 @@
 }
 
 @media (max-width: 576px) {
+    .HomeSlider {
+        padding: 0 5px;
+        margin-bottom: 20px;
+    }
+
+    .HomeSlider .section-header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .HomeSlider .section-title {
+        font-size: 18px;
+        padding-left: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .HomeSlider .section-title::before {
+        width: 3px;
+    }
+
+    .HomeSlider .title-decoration {
+        width: 25px;
+        height: 2px;
+        margin-top: 4px;
+        margin-left: 10px;
+    }
+
+    .HomeSlider .view-more {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .HomeSlider .view-more svg {
+        width: 16px;
+        height: 16px;
+    }
+
     .HomeSlider .img {
         height: 320px;
     }

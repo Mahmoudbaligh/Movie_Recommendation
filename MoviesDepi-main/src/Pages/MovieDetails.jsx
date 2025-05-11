@@ -279,6 +279,7 @@ const MovieDetails = () => {
                   slidesPerView: 6,
                 },
               }}
+              
             >
               {credits.cast.slice(0, 18).map(person => (
                 <SwiperSlide key={person.id}>

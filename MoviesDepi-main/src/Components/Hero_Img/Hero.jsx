@@ -213,7 +213,7 @@ const Hero = () => {
                                                     ) : null}
 
                                                     <Link to={`/movie/${t.id}`} className="text-decoration-none">
-                                                        <div className="d-flex gap-1 align-items-center btn btn-outline-light text-white">
+                                                        <div className="d-flex gap-1 align-items-center btn btn-outline-success text-white">
                                                             <span>
                                                                 <Info size={18} />
                                                             </span>

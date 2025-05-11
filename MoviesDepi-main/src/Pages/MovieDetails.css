@@ -203,13 +203,8 @@
 }
 
 .cast-card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(10px) scale(1.02);
   box-shadow: 0 15px 30px rgba(220, 53, 69, 0.3);
-}
-
-.cast-card:hover .cast-image {
-  border-color: #ff4757;
-  transform: scale(1.05);
 }
 
 .cast-image {
@@ -222,8 +217,6 @@
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid #dc3545;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s ease;
   background-color: #0a0a0a;
 }
 
@@ -681,11 +674,7 @@
     margin-top: 50px;
   }
 
-  .cast-image {
-    width: 90px;
-    height: 90px;
-    top: -45px;
-  }
+
 
   .cast-info {
     padding-top: 50px;
@@ -811,12 +800,6 @@
     height: 140px;
   }
 
-  .cast-image {
-    width: 70px;
-    height: 70px;
-    top: -35px;
-    border-width: 3px;
-  }
 
   .cast-info {
     padding-top: 40px;
